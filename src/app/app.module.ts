@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDataService } from './core/in-memory-data.service';
@@ -23,6 +24,7 @@ import { ZeroPaddingPipe } from './shared/zero-padding.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
   providers: [
