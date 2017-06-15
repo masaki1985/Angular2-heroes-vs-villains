@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 export class HeroService {
 
   private heroesUrl = 'api/heroes';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(
     private http: Http,
@@ -23,4 +24,8 @@ export class HeroService {
     return this.http.get(url).map(response => response.json().data as Hero);
   }
 
+  update(hero: Hero): Observable<Hero> {
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http.put(url, JSON.stringify(hero), {headers: this.headers}).map(() => hero);
+  }
 }
