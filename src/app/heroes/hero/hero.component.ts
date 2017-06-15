@@ -17,12 +17,12 @@ export class HeroComponent implements OnInit {
     private heroService: HeroService,
     private route: ActivatedRoute) {
   }
-
+  
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       this.heroService.getHero(id)
-        .then(hero => this.hero = hero);
+        .subscribe(hero => this.hero = hero);
     });
   }
 
@@ -30,4 +30,11 @@ export class HeroComponent implements OnInit {
     window.history.back();
   }
 
+  save(): void {
+    this.heroService.update(this.hero).subscribe(() => this.goBack());
+  }
+
+  delete(): void {
+    this.heroService.delete(this.hero.id).subscribe(() => this.goBack());
+  }
 }
