@@ -28,4 +28,9 @@ export class HeroService {
     const url = `${this.heroesUrl}/${hero.id}`;
     return this.http.put(url, JSON.stringify(hero), {headers: this.headers}).map(() => hero);
   }
+
+  create(name: string): Observable<Hero> {
+    return this.http.post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+            .map(res => res.json().data as Hero)
+  }
 }
