@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Hero } from './../shared/hero';
 import { HeroService } from './../shared/hero.service';
 
+
 @Component({
   selector: 'app-hero-list',
   templateUrl: './hero-list.component.html',
@@ -24,7 +25,7 @@ export class HeroListComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
   onSelect(hero: Hero): void {

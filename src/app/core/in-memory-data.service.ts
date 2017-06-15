@@ -1,13 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Hero } from "app/heroes/shared/hero";
+import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-@Injectable()
-export class InMemoryDataService {
+export class InMemoryDataService implements InMemoryDbService {
 
   constructor() { }
 
-  createDB() {
-    const HEROES: Hero[] = [
+  createDb() {
+    const heroes = [
       { id: 1, name: 'Spider-Man'},
       { id: 2, name: 'Captain Marvel'},
       { id: 3, name: 'Hulk'},
@@ -19,6 +17,8 @@ export class InMemoryDataService {
       { id: 9, name: 'Captain America'},
       { id: 10, name: 'Wolverine'},
     ];
+
+    return {heroes};
   }
 
 }
