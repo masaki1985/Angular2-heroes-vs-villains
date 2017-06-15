@@ -33,4 +33,10 @@ export class HeroService {
     return this.http.post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
             .map(res => res.json().data as Hero)
   }
+
+  delete(id: number): Observable<void> {
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+             .map(() => null);
+  }
 }
